@@ -8,16 +8,34 @@
 public class MatrixProduct {
 
     /* USING DAC ALGORITHM */
-    public static void matrixProduct_DAC(int[][] A, int[][] B) {
+    public static int[][] matrixProduct_DAC(int[][] A, int[][] B) {
         if (!(A.length == A[0].length                           //if A is a square matrix
               && A[0].length == B.length                        //if col of A is the same row of B
               && B.length == B[0].length                        //if B is a square matrix
-              && (Math.log10(A.length)/Math.log10(2) % 1) == 0  //if divisible by 2
-              && A.length >= 1)) {                              //if there is a square matrix of 1
+              && (Math.log10(A.length)/Math.log10(2) % 1) == 0)) {  //if divisible by 2
             throw new IllegalArgumentException("");
         }
         
     }
+
+    private static int[][] matrixProduct_DAC(int[][] A, int srA, int scA, int[][] B, int srB, int scB, int n) {
+        int[][] C = new int[n][n];
+        if (n == 1) {
+            C[0][0] = A[srA][scA] * B[srB][scB];
+        } else {
+            int[][] C11 = addMatrix(A, 0, 0, B, 0, 0, n/2);
+            int[][] C12 = addMatrix(A, 0, n/2+1, B, 0, n/2+1, n/2);
+            int[][] C21 = addMatrix(A, n/2+1, 0, B, n/2+1, 0, n/2);
+            int[][] C22 = addMatrix(A, n/2+1, n/2+1, B, n/2+1, n/2+1, n/2);
+
+        }
+        return C;
+    }
+
+    private static int[][] addMatrix() {
+    }
+
+
 
     /* USING STRASSEN ALGORITHM */
 //    public static int[][] matrixProduct_Strassen(int[][] A, int[][] B) {
