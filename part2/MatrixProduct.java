@@ -8,7 +8,7 @@
 public class MatrixProduct {
 
     /* USING DAC ALGORITHM */
-    public static int[][] matrixProduct_DAC(int[][] A, int[][] B) {
+    public static void matrixProduct_DAC(int[][] A, int[][] B) {
         if (!(A.length == A[0].length                           //if A is a square matrix
               && A[0].length == B.length                        //if col of A is the same row of B
               && B.length == B[0].length                        //if B is a square matrix
