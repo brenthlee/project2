@@ -20,6 +20,7 @@ public class MatrixWork {
             scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             System.out.println("File does not exist");
+            System.exit(0);
         }
         System.out.println("");
         String s = scanner.nextLine();
