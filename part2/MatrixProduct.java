@@ -23,16 +23,25 @@ public class MatrixProduct {
         if (n == 1) {
             C[0][0] = A[srA][scA] * B[srB][scB];
         } else {
-            int[][] C11 = addMatrix(A, 0, 0, B, 0, 0, n/2);
-            int[][] C12 = addMatrix(A, 0, n/2+1, B, 0, n/2+1, n/2);
-            int[][] C21 = addMatrix(A, n/2+1, 0, B, n/2+1, 0, n/2);
-            int[][] C22 = addMatrix(A, n/2+1, n/2+1, B, n/2+1, n/2+1, n/2);
-
+            int[][] C11 = addMatrix(
+                matrixProduct_DAC(A, 0, 0, B, 0, 0, n/2),
+                matrixProduct_DAC(A, 0, n/2+1, B, n/2+1, 0, n/2));
+            int[][] C12 = addMatrix(
+                matrixProduct_DAC(A, 0, 0, B, 0, n/2+1, n/2),
+                matrixProduct_DAC(A, 0, n/2+1, B, n/2+1, n/2+1, n/2));
+            int[][] C21 = addMatrix(
+                matrixProduct_DAC(A, n/2+1, 0, B, 0, 0, n/2),
+                matrixProduct_DAC(A, n/2+1, n/2+1, B, n/2+1, 0, n/2));
+            int[][] C22 = addMatrix(
+                matrixProduct_DAC(A, n/2+1, 0, B, 0, n/2+1, n/2),
+                matrixProduct_DAC(A, n/2+1, n/2+1, B, n/2+1, n/2+1, n/2));
+            for (int i = 0; i < n; i++) {
+            }
         }
         return C;
     }
 
-    private static int[][] addMatrix() {
+    private static int[][] addMatrix(int[][] left, int[][] right) {
     }
 
 
